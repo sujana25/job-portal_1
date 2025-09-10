@@ -68,10 +68,7 @@ const Navbar = () => {
                   {" "}
                   <Link to={"/Jobs"}>Jobs</Link>
                 </li>
-                <li>
-                  {" "}
-                  <Link to={"/Creator"}>About</Link>
-                </li>
+                
               </>
             )}
           </ul>
