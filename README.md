@@ -1,7 +1,7 @@
 Sure! Here's your updated README with your name as the creator:
 
 
-# MERN Job Portal – Created by Praveena Pantham
+# MERN Job Portal – Created by Sujana Yadla
 
 Welcome to my Job Portal project! This is a full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js) that allows users to search and apply for jobs, and recruiters to post job openings.
 
