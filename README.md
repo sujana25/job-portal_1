@@ -73,11 +73,9 @@ MongoDB Connected...
 
    npm run dev
 
-Default app URL: [http://localhost:5173](http://localhost:5173)
 
 ## Usage
 
-* Open [http://localhost:5173](http://localhost:5173)
 * Register as a Student or Recruiter
 * Recruiters can create job posts
 * Students can browse and apply to jobs
@@ -93,6 +91,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Author
 
 Developed by Praveena Pantham
-GitHub: [ https://github.com/praveenapantham](https://github.com/praveenapantham)
-LinkedIn: [https://www.linkedin.com/in/praveenapantham](https://www.linkedin.com/in/praveenapantham) 
+GitHub: [https://github.com/sujana25](https://github.com/sujana25)
+LinkedIn: [https://www.linkedin.com/in/yadlasujana/](https://www.linkedin.com/in/yadlasujana/) 
 
