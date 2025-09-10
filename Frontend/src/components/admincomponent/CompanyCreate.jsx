@@ -12,17 +12,12 @@ import axios from "axios";
 
 const CompanyCreate = () => {
   const navigate = useNavigate();
-  const [companyName, setCompanyName] = useState(""); // ✅ initialize with empty string
+  const [companyName, setCompanyName] = useState();
   const dispatch = useDispatch();
-
   const registerNewCompany = async () => {
-    if (!companyName.trim()) {
-      toast.error("Company name cannot be empty");
-      return;
-    }
     try {
       const res = await axios.post(
-        `${COMPANY_API_ENDPOINT}/register`,
+        ${COMPANY_API_ENDPOINT}/register,
         { companyName },
         {
           headers: {
@@ -35,22 +30,18 @@ const CompanyCreate = () => {
         dispatch(setSingleCompany(res.data.company));
         toast.success(res.data.message);
         const companyId = res?.data?.company?._id;
-        navigate(`/admin/companies/${companyId}`);
-      } else {
-        toast.error(res?.data?.message || "Something went wrong");
+        navigate(/admin/companies/${companyId});
       }
     } catch (error) {
-      console.error(error);
-      toast.error("Failed to register company");
+      console.log(error);
     }
   };
-
   return (
     <div>
       <Navbar />
       <div className="max-w-4xl mx-auto">
         <div className="my-10">
-          <h1 className="font-bold text-2xl">Company Name</h1>
+          <h1 className="font-bold text-2xl ">Company Name</h1>
           <p className="text-gray-600">Company Description</p>
         </div>
         <Label>Company Name</Label>
@@ -58,7 +49,6 @@ const CompanyCreate = () => {
           type="text"
           placeholder="Company Name"
           className="my-2"
-          value={companyName} // ✅ bind the input value
           onChange={(e) => setCompanyName(e.target.value)}
         />
 
