@@ -1,20 +1,13 @@
-import React, { useState } from "react";
-import Navbar from "../components_lite/Navbar";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
-import { COMPANY_API_ENDPOINT } from "@/utils/data";
-import { toast } from "sonner";
-import { useDispatch } from "react-redux";
-import { setSingleCompany } from "@/redux/companyslice";
-import axios from "axios";
-
 const CompanyCreate = () => {
   const navigate = useNavigate();
-  const [companyName, setCompanyName] = useState();
+  const [companyName, setCompanyName] = useState("");
   const dispatch = useDispatch();
+
   const registerNewCompany = async () => {
+    if (!companyName.trim()) {
+      toast.error("Company name cannot be empty");
+      return;
+    }
     try {
       const res = await axios.post(
         `${COMPANY_API_ENDPOINT}/register`,
@@ -33,15 +26,17 @@ const CompanyCreate = () => {
         navigate(`/admin/companies/${companyId}`);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("Failed to register company");
     }
   };
+
   return (
     <div>
       <Navbar />
       <div className="max-w-4xl mx-auto">
         <div className="my-10">
-          <h1 className="font-bold text-2xl ">Company Name</h1>
+          <h1 className="font-bold text-2xl">Company Name</h1>
           <p className="text-gray-600">Company Description</p>
         </div>
         <Label>Company Name</Label>
@@ -49,6 +44,7 @@ const CompanyCreate = () => {
           type="text"
           placeholder="Company Name"
           className="my-2"
+          value={companyName}
           onChange={(e) => setCompanyName(e.target.value)}
         />
 
@@ -65,5 +61,3 @@ const CompanyCreate = () => {
     </div>
   );
 };
-
-export default CompanyCreate;
