@@ -1,6 +1,18 @@
+import React, { useState } from "react";
+import Navbar from "../components_lite/Navbar";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
+import { COMPANY_API_ENDPOINT } from "@/utils/data";
+import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setSingleCompany } from "@/redux/companyslice";
+import axios from "axios";
+
 const CompanyCreate = () => {
   const navigate = useNavigate();
-  const [companyName, setCompanyName] = useState("");
+  const [companyName, setCompanyName] = useState(""); // ✅ initialize with empty string
   const dispatch = useDispatch();
 
   const registerNewCompany = async () => {
@@ -24,6 +36,8 @@ const CompanyCreate = () => {
         toast.success(res.data.message);
         const companyId = res?.data?.company?._id;
         navigate(`/admin/companies/${companyId}`);
+      } else {
+        toast.error(res?.data?.message || "Something went wrong");
       }
     } catch (error) {
       console.error(error);
@@ -44,7 +58,7 @@ const CompanyCreate = () => {
           type="text"
           placeholder="Company Name"
           className="my-2"
-          value={companyName}
+          value={companyName} // ✅ bind the input value
           onChange={(e) => setCompanyName(e.target.value)}
         />
 
@@ -61,3 +75,5 @@ const CompanyCreate = () => {
     </div>
   );
 };
+
+export default CompanyCreate;
